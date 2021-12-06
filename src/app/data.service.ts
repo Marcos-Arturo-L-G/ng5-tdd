@@ -10,8 +10,13 @@ import { BehaviorSubject } from 'rxjs/';
 })
 export class DataService {
 
+<<<<<<< HEAD
   private goals = new BehaviorSubject<any>(['La meta inicial', 'Otra meta :P']);
   goal=  this.goals.asObservable();
+=======
+  private goals = new BehaviorSubject<any> (['the inital goal','another silly life goal']);
+  goal = this.goals.asObservable();
+>>>>>>> parent of f39ede0 (alteracion leve en data.service.ts)
 
   constructor(private http: HttpClient) { }
 
