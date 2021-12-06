@@ -8,6 +8,7 @@ export class DataService {
 
   private goals = new BehaviorSubject<any> (['the inital goal','another silly life goal']);
   goal = this.goals.asObservable();
+	//apiurl="apiurl"
 
   constructor() { }
 
