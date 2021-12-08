@@ -20,7 +20,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  changeGoal(goal){
+  changeGoal(goal: anay){
     this.goals.next(goal)
   }
 
