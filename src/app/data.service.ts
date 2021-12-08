@@ -39,6 +39,14 @@ export class DataService {
     )
   }
 
+  newGoal(payload: any): Observable<GoalsApi> {
+    return this.http.post<GoalsApi>(this.apiURL + '/minecraft', JSON.stringify(payload), this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
   handleError(error: any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
