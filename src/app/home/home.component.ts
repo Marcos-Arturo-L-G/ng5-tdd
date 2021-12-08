@@ -34,15 +34,25 @@ export class HomeComponent implements OnInit {
   itemCount: number = 0;
   btnText: string='add an item';
   goalText: string = 'my frist live goal';
-  goals : string[] = [];
+  goals : any[] = [];
 
   constructor(private _data: DataService) { }
 
-  ngOnInit(): void {
-    this._data.goal.subscribe(res => this.goals = res);
+  ngOnInit() {
     this.itemCount = this.goals.length;
+    this._data.goal.subscribe(res=> this.goals = res);
     this._data.changeGoal(this.goals);
+
+    this._data.getGoals()
+     .subscribe((data: any) => {
+      alert(JSON.stringify(data.users));
+
+      this.goals = data.users;
+      this._data.changeGoal(this.goals);
+
+    });
   }
+
 
   addItem(){
     this.goals.push(this.goalText);
