@@ -55,11 +55,24 @@ export class HomeComponent implements OnInit {
 
 
   addItem(){
-    this.goals.push(this.goalText);
-    this.goalText = '';
-    this.itemCount = this.goals.length;
-    this._data.changeGoal(this.goals);
-  } 
+    var payload = {
+      name : this.goalText,
+      itemID : "minecraft:item",
+      numericalID: "90"
+    }
+
+    this._data.newGoal(payload)
+    .subscribe((data: any) => {
+   
+      this.goals.push(payload);
+      this.goalText='';
+      this.itemCount=this.goals.length;
+      this._data.changeGoal(this.goals);
+      
+    })
+
+   
+  }
   
   removeItem(i:any){
     this.goals.splice(i, 1);
